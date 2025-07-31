@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://5c6qpxee2un0"]
+
+[ext_resource type="Texture2D" uid="uid://dby6hfntbiiok" path="res://Sprites/Player/McQueenSpriteSheet.png" id="1_oo4mb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sy00s"]
+size = Vector3(0.294647, 0.201569, 0.0273438)
+
+[node name="Player2D" type="CharacterBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_oo4mb")
+hframes = 12
+vframes = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00724792, -0.0378876, 0)
+shape = SubResource("BoxShape3D_sy00s")
