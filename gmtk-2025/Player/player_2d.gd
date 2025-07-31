@@ -1,39 +1,38 @@
 extends RigidBody3D
 
-#@onready var anim = $AnimationPlayer
-@onready var car: Node3D = $Sprite3D
+@onready var player: Node3D = $Node3D
+@onready var sprite = $Node3D/Sprite3D
 
-const ACCELERATION = 10
+const ACCELERATION = 20
 var steering = 1.5
 
-var effectTurnSpeed := 0.1
-var effectTurnTilt := 0.75
+var TurnSpeed := 0.1
+var TurnTilt := 0.75
 
-var speedForce: float
+var speedImpact: float
 var turnDegree: float
 
 func _ready():
-	car.top_level = true
+	player.top_level = true
 
 func  _physics_process(delta):
-	car.global_position = global_position
+	player.global_position = global_position
 	
-	speedForce = Input.get_axis("accelerate", "reverse") * -ACCELERATION
+	speedImpact = Input.get_axis("accelerate", "reverse") * -ACCELERATION
 	turnDegree = Input.get_axis("turn_right", "turn_left") * deg_to_rad(steering)
 	
 	_curve_effect(delta)
-	car.rotate_y(turnDegree)
-	apply_force(-car.global_transform.basis.z * speedForce)
+	player.rotate_y(turnDegree)
+	apply_force(-player.global_transform.basis.z * speedImpact)
 	
 func _curve_effect(delta) -> void:
-	var turnStrenghtValue = turnDegree * linear_velocity.length() / effectTurnSpeed
-	var turnTiltValue = -turnDegree * linear_velocity.length() / effectTurnTilt
+	var turnStrenghtValue = turnDegree * linear_velocity.length() / TurnSpeed
+	var turnTiltValue = -turnDegree * linear_velocity.length() / TurnTilt
 	var changeSpeed = 1
 	
 	if turnDegree == 0: changeSpeed = 3
-	
-	car.rotation.y = lerp(car.rotation.y, turnStrenghtValue, changeSpeed * delta )
-	car.rotation.z = lerp(car.rotation.z, turnTiltValue, changeSpeed * delta )
+	player.rotation.z = lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
+	sprite.rotation.z = -lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
 	
 # Intento de codigo para animacion dinamica
 #func _ready():

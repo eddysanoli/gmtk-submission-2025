@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://5c6qpxee2un0"]
+[gd_scene load_steps=8 format=3 uid="uid://5c6qpxee2un0"]
 
 [ext_resource type="Texture2D" uid="uid://dby6hfntbiiok" path="res://Sprites/Player/McQueenSpriteSheet.png" id="1_5crvv"]
 [ext_resource type="Script" uid="uid://n4l5w1bomkkt" path="res://Player/player_2d.gd" id="1_ovrnl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ovrnl"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovrnl"]
+size = Vector3(0.306641, 0.208862, 0.0361328)
+
 [sub_resource type="Animation" id="Animation_aqtw3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("Node3D/Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +28,7 @@ resource_name = "turn_right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("Node3D/Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,18 +48,24 @@ _data = {
 linear_damp = 6.0
 script = ExtResource("1_ovrnl")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="PhysicsBall" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0377652, 0)
+shape = SubResource("SphereShape3D_ovrnl")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
 texture = ExtResource("1_5crvv")
 hframes = 12
 vframes = 3
 
-[node name="Camera3D" type="Camera3D" parent="Sprite3D"]
+[node name="Camera3D" type="Camera3D" parent="Node3D/Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0633189, 0.260296)
 current = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0377652, 0)
-shape = SubResource("SphereShape3D_ovrnl")
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.034729, 0)
+shape = SubResource("BoxShape3D_ovrnl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
