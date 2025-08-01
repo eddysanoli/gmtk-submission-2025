@@ -34,6 +34,7 @@ theme = ExtResource("2_onhes")
 [node name="HBoxContainer" type="HBoxContainer" parent="Main Margin"]
 layout_mode = 2
 theme = ExtResource("2_onhes")
+theme_override_constants/separation = 220
 alignment = 1
 
 [node name="Shusho" type="TextureRect" parent="Main Margin/HBoxContainer"]
