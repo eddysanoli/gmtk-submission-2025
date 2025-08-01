@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpfil4fandmgg"]
+
+[ext_resource type="Script" uid="uid://dplfuykwa1koi" path="res://Objects/Anomalies/anomaly.gd" id="1_nig7a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v7l2q"]
+height = 0.794922
+
+[node name="Anomaly" type="Node3D"]
+script = ExtResource("1_nig7a")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_v7l2q")
