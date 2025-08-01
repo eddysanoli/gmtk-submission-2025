@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmv6ton7gsou6"]
+[gd_scene load_steps=6 format=3 uid="uid://cmv6ton7gsou6"]
 
 [ext_resource type="Texture2D" uid="uid://pa47of2gu8m3" path="res://World/checkboard.png" id="1_an0lv"]
+[ext_resource type="Script" uid="uid://dlbc8pe3l6ky5" path="res://World/test_world.gd" id="1_ftki0"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="2_rspi7"]
+[ext_resource type="PackedScene" uid="uid://doa5uq14318y8" path="res://Objects/boost_pad.tscn" id="3_rspi7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxppu"]
 albedo_color = Color(0.146489, 0.938186, 0.451933, 1)
@@ -9,6 +11,7 @@ albedo_texture = ExtResource("1_an0lv")
 uv1_triplanar = true
 
 [node name="TestWorld" type="Node3D"]
+script = ExtResource("1_ftki0")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -21,3 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 0.587206, 0.809437, 0, -0.809437, 0.587206, 
 
 [node name="Player2D" parent="." instance=ExtResource("2_rspi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278727, 0.173333, 0.302668)
+
+[node name="BoostPad" parent="." instance=ExtResource("3_rspi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127702, 2.38419e-07, -2.40595)

@@ -6,7 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ovrnl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovrnl"]
-size = Vector3(0.300537, 0.207275, 0.0644531)
+size = Vector3(0.306641, 0.208862, 0.0361328)
 
 [sub_resource type="Animation" id="Animation_aqtw3"]
 length = 0.001
@@ -60,14 +60,13 @@ hframes = 12
 vframes = 3
 
 [node name="Camera3D" type="Camera3D" parent="Node3D/Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0633189, 0.260296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0633189, 0.289886)
 current = true
 
 [node name="Hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.034729, 0)
-collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="HitboxMesh" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.034729, 0)
 shape = SubResource("BoxShape3D_ovrnl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -75,8 +74,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_wrvhv")
 }
 
-[node name="boostTimer" type="Timer" parent="."]
-wait_time = 5.0
+[node name="BoostTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="boostTimer" to="." method="_on_boost_timer_timeout"]

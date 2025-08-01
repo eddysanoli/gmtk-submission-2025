@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnuprxftagxka"]
+
+[ext_resource type="Script" uid="uid://bopmshxn1kywl" path="res://Objects/checkpoint.gd" id="1_gcwsm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv8qh"]
+size = Vector3(3.99023, 0.0322266, 1.13062)
+
+[node name="Checkpoint" type="Area3D"]
+script = ExtResource("1_gcwsm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bv8qh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

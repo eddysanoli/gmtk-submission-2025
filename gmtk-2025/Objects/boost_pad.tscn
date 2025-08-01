@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://doa5uq14318y8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0jv0"]
+size = Vector3(1.37476, 0.0234375, 0.633789)
+
+[node name="BoostPad" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_d0jv0")
+debug_color = Color(0.810166, 0.196171, 0.882212, 0.42)
