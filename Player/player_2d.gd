@@ -32,16 +32,17 @@ func _curve_effect(delta) -> void:
 	player.rotation.z = lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
 	sprite.rotation.z = -lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
 
-#Object Collision Code (TO BE TESTED)
-func _on_hitbox_body_entered(body):
+
+func _on_boost_timer_timeout():
+	acceleration = lerp(acceleration, 20, 3)
+
+
+func _on_body_entered(body):
 	if body.has_method("anomaly"):
 		pass #Reemplazar con body.anomaly()
 	elif body.has_method("shatter"):
 		pass #Reemplazar con body.break()
-	elif body == get_node(".root/Objects/boost_pad"):
-		print("BOOSTED")
-		acceleration = 40
-		$BoostTimer.start()
-
-func _on_boost_timer_timeout():
-	acceleration = lerp(acceleration, 20, 3)
+	#elif body == get_node(".root/Objects/boost_pad"):
+		#print("BOOSTED")
+		#acceleration = 40
+		#$BoostTimer.start()
