@@ -37,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278727, 0.173333, 0.302668
 transform = Transform3D(0.317354, 0, 0.948307, 0, 1, 0, -0.948307, 0, 0.317354, -1.89995, 0.0218276, -0.150927)
 
 [node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(3.5536, 0, 0, 0, 3.5536, 0, 0, 0, 3.5536, 0, 0, 0)
 curve = SubResource("Curve3D_w6qo1")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]

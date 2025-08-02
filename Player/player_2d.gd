@@ -8,6 +8,8 @@ var steering = 1.5
 var TurnSpeed := 0.1
 var TurnTilt := 0.75
 
+var terrain = 0
+
 var speedImpact: float
 var turnDegree: float
 
@@ -31,11 +33,20 @@ func _curve_effect(delta) -> void:
 	if turnDegree == 0: changeSpeed = 3
 	player.rotation.z = lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
 	sprite.rotation.z = -lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
+	
+	#Change Damp value according to the terrain 
+	match terrain:
+		1:
+			linear_damp = 5.0
+		2:
+			linear_damp = 8.0
+		_:
+			linear_damp = 3.5
 
 func boosted():
-	print("BOOSTED")
 	acceleration = 35
 	%BoostTimer.start()
 
 func _on_boost_timer_timeout():
 	acceleration = 15
+	

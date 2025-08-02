@@ -50,6 +50,7 @@ script = ExtResource("1_ovrnl")
 shape = SubResource("SphereShape3D_ovrnl")
 
 [node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018128, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D"]
 texture_filter = 0
