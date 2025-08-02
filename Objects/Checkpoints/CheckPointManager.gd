@@ -10,8 +10,9 @@ var checkPoints: Array
 # Number of laps the race has
 @export var lapsNumber: int
 
-# The checkpoints already passed by the car in the current lap
-var currentCheckPoints: Array
+# Index for the next CheckPoint in the race
+var nextCheckPoint: int = 0;
+
 # Current Lap
 var currentLap: int = 1
 
@@ -20,16 +21,19 @@ func _ready() -> void:
 	print(checkPoints)
 
 func addCheckPoint(newCheckPoint, isStart, isFinal) -> void:
-	if currentCheckPoints.has(newCheckPoint):
-		return
-	currentCheckPoints.append(newCheckPoint)
-	print(currentCheckPoints)
-	if isFinal && currentCheckPoints == raceOrder:
-		if currentLap < lapsNumber:
-			currentCheckPoints.clear()
-			currentLap += 1
-			print('new lap')
-		else: 
-			print("Woooooo Race finished")
-	
-	
+	if newCheckPoint == raceOrder[nextCheckPoint]:
+		print("Correct CheckPoint")
+		nextCheckPoint = (nextCheckPoint + 1) % len(raceOrder)
+		if (isFinal):
+			if (isStart):
+				nextCheckPoint = 1;
+				currentLap += 1;
+				print('new lap')
+			else:
+				nextCheckPoint = 0;
+				currentLap += 1;
+				print('new lap')
+	else: 
+		print("Wrong Way")
+	if currentLap > lapsNumber:
+		print("Wooooo Race Finished")
