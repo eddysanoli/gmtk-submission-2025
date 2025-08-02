@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df0vjxsbucf81"
-path.s3tc="res://.godot/imported/ground_grass_n.png-8a5cf3f6973186ea0ec8a396507c5118.s3tc.ctex"
+uid="uid://c4p06rt6ye0y0"
+path.s3tc="res://.godot/imported/ground_diag_grass_to_dirt_n.png-ad161a39dd25349a31f636f32eb16d44.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ef3a6fe1f28a5034745de5b0aa40c210"
+"md5": "cad18851568a4fe3904812e816613568"
 }
 
 [deps]
 
-source_file="res://Assets/models/ground_grass_n.png"
-dest_files=["res://.godot/imported/ground_grass_n.png-8a5cf3f6973186ea0ec8a396507c5118.s3tc.ctex"]
+source_file="res://Assets/models/ground_diag_grass_to_dirt_n.png"
+dest_files=["res://.godot/imported/ground_diag_grass_to_dirt_n.png-ad161a39dd25349a31f636f32eb16d44.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/models/ground_grass_n.png"
+roughness/src_normal="res://Assets/models/ground_diag_grass_to_dirt_n.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

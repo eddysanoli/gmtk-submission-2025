@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df0vjxsbucf81"
-path.s3tc="res://.godot/imported/ground_grass_n.png-8a5cf3f6973186ea0ec8a396507c5118.s3tc.ctex"
+uid="uid://dmhyc04ewt7vt"
+path.s3tc="res://.godot/imported/ground_dirt.png-5d84414ce7d0386a111e4298615cef68.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ef3a6fe1f28a5034745de5b0aa40c210"
+"md5": "f058bf8d8e114c44f07766c0da0272e8"
 }
 
 [deps]
 
-source_file="res://Assets/models/ground_grass_n.png"
-dest_files=["res://.godot/imported/ground_grass_n.png-8a5cf3f6973186ea0ec8a396507c5118.s3tc.ctex"]
+source_file="res://Assets/models/ground_dirt.png"
+dest_files=["res://.godot/imported/ground_dirt.png-5d84414ce7d0386a111e4298615cef68.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Assets/models/ground_grass_n.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
