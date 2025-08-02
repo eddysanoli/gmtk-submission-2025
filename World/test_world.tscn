@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmv6ton7gsou6"]
+[gd_scene load_steps=8 format=3 uid="uid://cmv6ton7gsou6"]
 
 [ext_resource type="Texture2D" uid="uid://pa47of2gu8m3" path="res://World/checkboard.png" id="1_an0lv"]
 [ext_resource type="Script" uid="uid://dlbc8pe3l6ky5" path="res://World/test_world.gd" id="1_ftki0"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="2_rspi7"]
+[ext_resource type="PackedScene" uid="uid://8rrkp17runxc" path="res://Objects/anomaly.tscn" id="5_kgiip"]
 [ext_resource type="PackedScene" uid="uid://doa5uq14318y8" path="res://Objects/boost_pad.tscn" id="5_w6qo1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxppu"]
@@ -42,3 +43,5 @@ curve = SubResource("Curve3D_w6qo1")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
 transform = Transform3D(-0.8516, -0.00494036, -0.524168, -6.98492e-10, 0.999956, -0.00942471, 0.524192, -0.00802609, -0.851562, 2.29855, -0.0111263, -2.26757)
+
+[node name="Anomaly" parent="." instance=ExtResource("5_kgiip")]

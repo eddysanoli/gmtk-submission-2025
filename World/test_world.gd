@@ -12,12 +12,10 @@ var lap_time: Array[float] = []
 @onready var path_follow: PathFollow3D = $Path3D/PathFollow3D
 @onready var anomaly_lap = randi_range(2, lap_number)
 
-func _ready() -> void:
-	generate_anomaly()
 
 func _process(delta):
 #	Anomaly Generation
-	if lap_count == anomaly_lap:
+	if lap_count == anomaly_lap and anomaly_present == false:
 		anomaly_present = true
 		generate_anomaly()
 	
