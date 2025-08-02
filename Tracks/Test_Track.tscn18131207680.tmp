@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4edbm5j3v8v5"]
+
+[ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="1_oixsa"]
+[ext_resource type="Texture2D" uid="uid://cad16yt8kgp1l" path="res://Assets/Sprites/Tracks/Mario Circuit 4.png" id="2_w6sij"]
+[ext_resource type="PackedScene" uid="uid://dtbshwbbs21ow" path="res://Objects/Checkpoints/CheckPoint.tscn" id="3_edv47"]
+[ext_resource type="Script" uid="uid://cvsppdbkkf7ut" path="res://Objects/Checkpoints/CheckPointManager.gd" id="3_y1r7d"]
+[ext_resource type="PackedScene" uid="uid://blm8k3irsmflt" path="res://Objects/Checkpoints/CheckPointV2.tscn" id="4_y1r7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6sij"]
+transparency = 1
+albedo_color = Color(0.113725, 1, 1, 0.309804)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edv47"]
+
+[node name="TestTrack" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, 0)
+light_energy = 9.82
+omni_range = 4096.0
+omni_attenuation = 0.024
+omni_shadow_mode = 0
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0)
+use_collision = true
+size = Vector3(20, 0.5, 20)
+
+[node name="Sprite3D" type="Sprite3D" parent="Floor"]
+transform = Transform3D(1.81818, 0, 0, 0, -8.74228e-08, -2, 0, 1.81818, -7.94752e-08, 2.727, 0.251, 0)
+texture_filter = 2
+texture = ExtResource("2_w6sij")
+
+[node name="Player2D" parent="." instance=ExtResource("1_oixsa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0.489297, -4.6)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = SubResource("StandardMaterial3D_w6sij")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(21.2784, 0, 0, 0, 3.43266, 0, 0, 0, 0.72, 0, 0, 10.1)
+material_overlay = SubResource("StandardMaterial3D_edv47")
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(21.2784, 0, 0, 0, 3.43266, 0, 0, 0, 0.72, 0, 0.1, -11)
+material_overlay = SubResource("StandardMaterial3D_edv47")
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-9.30108e-07, 0, -0.72, 0, 3.43266, 0, 21.2784, 0, -3.14722e-08, 10.7, 0, -0.3)
+material_overlay = SubResource("StandardMaterial3D_edv47")
+use_collision = true
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-9.30108e-07, 0, -0.72, 0, 3.43266, 0, 21.2784, 0, -3.14722e-08, -10.4, 0, -0.3)
+material_overlay = SubResource("StandardMaterial3D_edv47")
+use_collision = true
+
+[node name="RaceManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_y1r7d")
+nodeOrder = ["1", "2"]
+
+[node name="CheckPointV2" parent="RaceManager" instance=ExtResource("4_y1r7d")]
+transform = Transform3D(0.420667, 0, 0, 0, 0.998412, 0, 0, 0, 0.466246, 8.90177, 0.280722, 0.0931466)
+size = Vector3(3.7486, 0.001, 0.601074)
+
+[node name="CheckPointV3" parent="RaceManager" instance=ExtResource("4_y1r7d")]
+transform = Transform3D(-0.244269, 0, -0.18341, 0, 1, 0, 0.0553307, 0, -0.809704, 3.31015, 0.26227, 3.47677)
+size = Vector3(6.18681, 0.001, 0.35144)
+
+[node name="StartEnd" parent="RaceManager" instance=ExtResource("3_edv47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96104, 0.613861, -1.01411)
