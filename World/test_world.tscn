@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmv6ton7gsou6"]
+[gd_scene load_steps=7 format=3 uid="uid://cmv6ton7gsou6"]
 
 [ext_resource type="Texture2D" uid="uid://pa47of2gu8m3" path="res://World/checkboard.png" id="1_an0lv"]
 [ext_resource type="Script" uid="uid://dlbc8pe3l6ky5" path="res://World/test_world.gd" id="1_ftki0"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="2_rspi7"]
-[ext_resource type="PackedScene" uid="uid://doa5uq14318y8" path="res://Objects/boost_pad.tscn" id="3_rspi7"]
+[ext_resource type="PackedScene" uid="uid://doa5uq14318y8" path="res://Objects/boost_pad.tscn" id="5_w6qo1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxppu"]
 albedo_color = Color(0.146489, 0.938186, 0.451933, 1)
 albedo_texture = ExtResource("1_an0lv")
 uv1_triplanar = true
+
+[sub_resource type="Curve3D" id="Curve3D_w6qo1"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.29855, -0.0111263, -2.26757, 0, 0, 0, 0, 0, 0, 3.01695, 0.00179076, -1.10046, 0, 0, 0, 0, 0, 0, 2.78314, 0.0142243, 0.423328, 0, 0, 0, 0, 0, 0, 0.634766, 0.0216153, 2.19858, 0, 0, 0, 0, 0, 0, -1.7761, 0.0145693, 2.43559, 0, 0, 0, 0, 0, 0, -3.65097, -0.000696898, 1.50016, 0, 0, 0, 0, 0, 0, -3.76661, -0.0141666, 0.00901772, 0, 0, 0, 0, 0, 0, -2.77035, -0.0225251, -1.37838, 0, 0, 0, 0, 0, 0, 0.536787, -0.0217657, -2.72241),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [node name="TestWorld" type="Node3D"]
 script = ExtResource("1_ftki0")
@@ -20,10 +28,16 @@ size = Vector3(50.3928, 1, 37.2969)
 material = SubResource("StandardMaterial3D_dxppu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.587206, 0.809437, 0, -0.809437, 0.587206, 0, 4.64802, 2.0079)
+transform = Transform3D(1, 0, 0, 0, 0.587206, 0.809437, 0, -0.809437, 0.587206, -36.7331, 128.843, 2.0079)
 
 [node name="Player2D" parent="." instance=ExtResource("2_rspi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278727, 0.173333, 0.302668)
 
-[node name="BoostPad" parent="." instance=ExtResource("3_rspi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127702, 2.38419e-07, -2.40595)
+[node name="BoostPad" parent="." instance=ExtResource("5_w6qo1")]
+transform = Transform3D(0.317354, 0, 0.948307, 0, 1, 0, -0.948307, 0, 0.317354, -1.89995, 0.0218276, -0.150927)
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_w6qo1")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.8516, -0.00494036, -0.524168, -6.98492e-10, 0.999956, -0.00942471, 0.524192, -0.00802609, -0.851562, 2.29855, -0.0111263, -2.26757)

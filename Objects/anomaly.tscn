@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://8rrkp17runxc"]
+[gd_scene load_steps=4 format=3 uid="uid://8rrkp17runxc"]
 
 [ext_resource type="Script" uid="uid://dplfuykwa1koi" path="res://Objects/Anomalies/anomaly.gd" id="1_fikew"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v7l2q"]
 height = 0.794922
 
-[node name="Anomaly" type="Node3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_fikew"]
+height = 0.8
+
+[node name="Anomaly" type="Area3D"]
 script = ExtResource("1_fikew")
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_v7l2q")
+debug_color = Color(0.6, 0.372549, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CylinderMesh_fikew")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
