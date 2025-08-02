@@ -43,7 +43,7 @@ _data = {
 }
 
 [node name="Player" type="RigidBody3D"]
-linear_damp = 2.5
+linear_damp = 3.5
 script = ExtResource("1_ovrnl")
 
 [node name="PhysicsBall" type="CollisionShape3D" parent="."]
