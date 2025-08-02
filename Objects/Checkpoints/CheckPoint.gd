@@ -9,4 +9,5 @@ extends CSGBox3D
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print(body)
-	raceManager.addCheckPoint(checkName, isStart, isFinal)
+	raceManager.passThroughCheck(checkName, isStart, isFinal)
+	# raceManager.passThrough(checkName, isStart, isFinal)
