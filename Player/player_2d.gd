@@ -13,11 +13,18 @@ var terrain = 0
 var speedImpact: float
 var turnDegree: float
 
+@onready var ground_map = get_parent().get_node("Ground Map") 
+var current_tile: int
+
 func _ready():
 	player.top_level = true
 
 func  _physics_process(delta):
 	player.global_position = global_position
+	
+	var player_position = player.global_position
+	current_tile = ground_map.get_cell_item(player_position)
+	print(current_tile)
 	
 	speedImpact = Input.get_axis("accelerate", "reverse") * -acceleration
 	turnDegree = Input.get_axis("turn_right", "turn_left") * deg_to_rad(steering)
@@ -35,12 +42,12 @@ func _curve_effect(delta) -> void:
 	sprite.rotation.z = -lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
 	
 	#Change Damp value according to the terrain 
-	match terrain:
-		1:
+	match current_tile:
+		7:
 			linear_damp = 5.0
-		2:
-			linear_damp = 8.0
-		_:
+		0:
+			linear_damp = 7.0
+		1:
 			linear_damp = 3.5
 
 func boosted():
