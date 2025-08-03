@@ -11,6 +11,7 @@ uv1_triplanar = true
 size = Vector3(1, 3, 1)
 
 [node name="CheckPointV2" type="CSGBox3D"]
+visible = false
 size = Vector3(1, 0.001, 1)
 material = SubResource("StandardMaterial3D_6vbko")
 script = ExtResource("2_sruav")

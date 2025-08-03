@@ -24,7 +24,6 @@ func  _physics_process(delta):
 	
 	var player_position = player.global_position
 	current_tile = ground_map.get_cell_item(player_position)
-	print(current_tile)
 	
 	speedImpact = Input.get_axis("accelerate", "reverse") * -acceleration
 	turnDegree = Input.get_axis("turn_right", "turn_left") * deg_to_rad(steering)
