@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhgqsafyr7gd8"]
+[gd_scene load_steps=12 format=3 uid="uid://bhgqsafyr7gd8"]
 
 [ext_resource type="MeshLibrary" uid="uid://7etwhnntf3gv" path="res://Assets/meshes/ground_tileset.tres" id="2_0xm2m"]
 [ext_resource type="MeshLibrary" uid="uid://b70jkwax5pmal" path="res://Assets/meshes/blocks_tileset.tres" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://bok7i3t4o68av" path="res://race_manager.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://blm8k3irsmflt" path="res://Objects/Checkpoints/CheckPointV2.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cq6vwgud8dtdu" path="res://Objects/Time/timer_control.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_top_color = Color(0.235228, 0.799807, 1, 1)
@@ -184,7 +185,44 @@ label_settings = SubResource("LabelSettings_lquwl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AnomalyWarning" type="ColorRect" parent="UserInterface"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.984314, 0, 0.223529, 0.0823529)
+
+[node name="Warning" type="Label" parent="UserInterface/AnomalyWarning"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 0.988235)
+theme_override_colors/font_shadow_color = Color(0.44895, 1.30555e-06, 9.62615e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "
+An Anomaly has Appeared
+Break it to end the Loop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerControl" parent="CanvasLayer" instance=ExtResource("6_7mycd")]
+
 [node name="CountTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="WarningTimer" type="Timer" parent="."]
+wait_time = 1.5
+
 [connection signal="timeout" from="CountTimer" to="RaceManager" method="_on_count_timer_timeout"]
+[connection signal="timeout" from="WarningTimer" to="RaceManager" method="_on_warning_timer_timeout"]

@@ -33,6 +33,7 @@ var countdown = 5
 
 func _ready():
 	$"../UserInterface/Countdown".hide()
+	$"../UserInterface/AnomalyWarning".hide()
 	var player = get_node("../Player")
 	connect("enable_input", Callable(player, "_on_enable_input"))
 
@@ -42,8 +43,9 @@ func _ready():
 		current_lap = 0
 		print('start', current_lap)
 
-
 func _process(delta) -> void:
+	# display current time
+	timerUI.set_time(time_elapsed)
   # Anomaly Generation
 	if current_lap == anomaly_lap && anomaly_present == false && not anomaly_destroyed: 
 		anomaly_present = true
@@ -65,10 +67,15 @@ func start_count():
 
 func save_time():
 	var lap_index = current_lap -1
-	lap_time[lap_index] = time_elapsed
-	time_elapsed = 0.0
+	var previous_time = 0;
+	if len(lap_time) > 0:
+		previous_time = lap_time.back()
+	timerUI.add_lap_time(time_elapsed - previous_time)
+	lap_time.append(time_elapsed)
 
 func generate_anomaly() -> void:
+	$"../UserInterface/AnomalyWarning".show()
+	$"../WarningTimer".start()
 	var new_anomaly = anomaly_scene.instantiate()
 	path_follow.progress_ratio = randf()
 	new_anomaly.global_transform = path_follow.global_transform
@@ -86,22 +93,19 @@ func passThroughCheck(newCheckPoint, isStart, isFinal) -> void:
 		return
 	print(race_order[next_check_point])
 	if newCheckPoint == race_order[next_check_point]:
-		print("Correct CheckPoint")
 		next_check_point = (next_check_point + 1) % len(race_order)
 		if (isFinal):
 			if (isStart):
 				next_check_point = 1;
 				current_lap += 1;
-				print('new lap')
 			else:
 				next_check_point = 0;
 				current_lap += 1;
-				print('new lap')
 	else: 
 		print("Wrong Way")
    # Check if race is finished 
 	if current_lap > laps_number:
-		print("Wooooo Race Finished")
+		get_tree().change_scene_to_file("res://UI/main_menu.tscn")
 		
 func get_checkpoint() -> Array:
 	# figure out which checkpoint we last passed
@@ -135,3 +139,7 @@ func _on_count_timer_timeout() -> void:
 	print(countdown)
 	countdown -= 1
 	start_count()
+
+
+func _on_warning_timer_timeout() -> void:
+	$"../UserInterface/AnomalyWarning".hide()
