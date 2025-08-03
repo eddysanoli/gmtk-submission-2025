@@ -39,6 +39,14 @@ func _process(_delta: float) -> void:
 		flip_h = true
 		play("turning")
 
+	if (
+		state == AnimationState.IDLE and
+		(not pressed_directions[Direction.LEFT] and not pressed_directions[Direction.RIGHT])
+	):
+		state = AnimationState.IDLE
+		direction = Direction.STRAIGHT
+		play("idle")
+
 	# IDLE -> TURNING_RIGHT
 	elif (
 		state == AnimationState.IDLE and
@@ -113,7 +121,6 @@ func _process(_delta: float) -> void:
 		speed_scale = 1.3
 		play_backwards("turning")
 		speed_scale = 1
-	pass
 
 
 func _on_animation_finished() -> void:
