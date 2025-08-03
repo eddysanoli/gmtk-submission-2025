@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bac1aufew14nt"
-path="res://.godot/imported/Shusho - Turning - 1.png-0c5f3674de2bebc602f82b8f90c9894c.ctex"
+path="res://.godot/imported/Shusho - Turning - 1.png-2c3929160a403d644a07799aeec2a58a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Player/Shusho - Turning - 1.png"
-dest_files=["res://.godot/imported/Shusho - Turning - 1.png-0c5f3674de2bebc602f82b8f90c9894c.ctex"]
+source_file="res://Assets/Sprites/Player/Shusho - Turning - 1.png"
+dest_files=["res://.godot/imported/Shusho - Turning - 1.png-2c3929160a403d644a07799aeec2a58a.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp4vqlam1163q"
-path="res://.godot/imported/Shusho - Idle - Spritesheet.png-3ac4f1e83f481709ea778d75dc10f169.ctex"
+path="res://.godot/imported/Shusho - Idle - Spritesheet.png-525802fb14695ce9c022ecae635c4c59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Player/Shusho - Idle - Spritesheet.png"
-dest_files=["res://.godot/imported/Shusho - Idle - Spritesheet.png-3ac4f1e83f481709ea778d75dc10f169.ctex"]
+source_file="res://Assets/Sprites/Player/Shusho - Idle - Spritesheet.png"
+dest_files=["res://.godot/imported/Shusho - Idle - Spritesheet.png-525802fb14695ce9c022ecae635c4c59.ctex"]
 
 [params]
 
