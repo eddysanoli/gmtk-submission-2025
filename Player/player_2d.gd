@@ -48,6 +48,8 @@ func _curve_effect(delta) -> void:
 			linear_damp = 7.0
 		1:
 			linear_damp = 3.5
+		2:
+			respawn()
 
 func boosted():
 	acceleration = 35
@@ -55,3 +57,30 @@ func boosted():
 
 func _on_boost_timer_timeout():
 	acceleration = 15
+	
+func respawn():
+	var data: Array = get_parent().get_node("RaceManager").get_checkpoint()
+	if data.size() < 2:
+		return
+	var spawn_pos: Vector3  = data[0]
+	var target_pos: Vector3 = data[1]
+
+	# --- compute flat delta on XZ  ---
+	var delta: Vector3 = (target_pos - spawn_pos)
+	delta.y = 0
+
+	# --- compensates for -Z orientation ---
+	var yaw: float = atan2(-delta.x, -delta.z)
+
+	# --- teleports player to checkpoint ---
+	sleeping = true
+	global_position = spawn_pos
+	rotation = Vector3(0, yaw, 0)
+	linear_velocity  = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	sleeping = false
+
+	player.global_position = spawn_pos
+	player.rotation = Vector3(player.rotation.x, yaw, player.rotation.z)
+
+	sprite.rotation.z = 0

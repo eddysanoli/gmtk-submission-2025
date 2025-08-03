@@ -81,3 +81,30 @@ func passThroughCheck(newCheckPoint, isStart, isFinal) -> void:
    # Check if race is finished 
 	if current_lap > laps_number:
 		print("Wooooo Race Finished")
+		
+func get_checkpoint() -> Array:
+	# figure out which checkpoint we last passed
+	var cp_index: int = next_check_point - 1
+	if cp_index < 0:
+		cp_index = race_order.size() - 1
+
+	var cps: Array = get_children()
+	if cp_index >= cps.size():
+		push_error("get_checkpoint(): cp_index %d out of range" % cp_index)
+		return []
+	var cp_node: Node = cps[cp_index]
+
+	if not cp_node.has_node("Marker3D"):
+		push_error("Checkpoint #%d missing Marker3D" % cp_index)
+		return []
+	if not cp_node.has_node("DirectionPoint"):
+		push_error("Checkpoint #%d missing DirectionPoint" % cp_index)
+		return []
+
+	var marker:       Node3D = cp_node.get_node("Marker3D")      as Node3D
+	var directionPt:  Node3D = cp_node.get_node("DirectionPoint") as Node3D
+
+	return [
+		marker.global_transform.origin,
+		directionPt.global_transform.origin
+	]

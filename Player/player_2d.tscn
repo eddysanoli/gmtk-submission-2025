@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://n4l5w1bomkkt" path="res://Player/player_2d.gd" id="1_ovrnl"]
 [ext_resource type="Texture2D" uid="uid://bjxrv6ws1vrls" path="res://Sprites/Player/McQueenSpriteSheet - Big.png" id="3_aqtw3"]
-[ext_resource type="Script" uid="uid://oenoat8lvtas" path="res://Player/animated_sprite_3d.gd" id="3_wrvhv"]
+[ext_resource type="Script" path="res://Player/animated_sprite_3d.gd" id="3_wrvhv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ovrnl"]
 radius = 0.160687
