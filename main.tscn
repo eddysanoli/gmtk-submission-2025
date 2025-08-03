@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhgqsafyr7gd8"]
+[gd_scene load_steps=16 format=3 uid="uid://bhgqsafyr7gd8"]
 
 [ext_resource type="MeshLibrary" uid="uid://7etwhnntf3gv" path="res://Assets/meshes/ground_tileset.tres" id="2_0xm2m"]
 [ext_resource type="MeshLibrary" uid="uid://b70jkwax5pmal" path="res://Assets/meshes/blocks_tileset.tres" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://bok7i3t4o68av" path="res://race_manager.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://blm8k3irsmflt" path="res://Objects/Checkpoints/CheckPointV2.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://dumw6ultcf302" path="res://Assets/Sprites/UI/Numbers/5.png" id="6_4c57u"]
 [ext_resource type="PackedScene" uid="uid://cq6vwgud8dtdu" path="res://Objects/Time/timer_control.tscn" id="6_7mycd"]
-[ext_resource type="Texture2D" uid="uid://duthwdie64abd" path="res://Assets/sprites/UI/Numbers/1.png" id="7_5vw27"]
-[ext_resource type="Texture2D" uid="uid://cro1yr7jn3007" path="res://Assets/sprites/UI/Laps - Sprite.png" id="7_kek77"]
-[ext_resource type="Texture2D" uid="uid://pwrnd4idsp14" path="res://Assets/sprites/UI/Slash - Sprite.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://duthwdie64abd" path="res://Assets/Sprites/UI/Numbers/1.png" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cro1yr7jn3007" path="res://Assets/Sprites/UI/Laps - Sprite.png" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://pwrnd4idsp14" path="res://Assets/Sprites/UI/Slash - Sprite.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://osmnei3qs6re" path="res://Assets/Sprites/UI/Numbers/3.png" id="10_efxa6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_top_color = Color(0.235228, 0.799807, 1, 1)
@@ -32,10 +34,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 139
-
-[sub_resource type="LabelSettings" id="LabelSettings_lquwl"]
-font_size = 64
-font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node3D"]
 
@@ -170,7 +168,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label" type="Label" parent="UserInterface/Countdown"]
+[node name="Label" type="TextureRect" parent="UserInterface/Countdown"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,13 +181,9 @@ offset_right = 47.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "5"
-label_settings = SubResource("LabelSettings_lquwl")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("6_4c57u")
 
 [node name="AnomalyWarning" type="ColorRect" parent="UserInterface"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -200,13 +194,12 @@ color = Color(0.984314, 0, 0.223529, 0.0823529)
 
 [node name="Warning" type="Label" parent="UserInterface/AnomalyWarning"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -408.0
+offset_bottom = 141.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(0.74558, 0.74558, 0.74558, 0.988235)
 theme_override_colors/font_shadow_color = Color(0.44895, 1.30555e-06, 9.62615e-08, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -216,6 +209,56 @@ An Anomaly has Appeared
 Break it to end the Loop"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LapCount" type="ColorRect" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Lap Text" type="TextureRect" parent="UserInterface/LapCount"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 332.0
+offset_bottom = 217.0
+size_flags_horizontal = 3
+texture = ExtResource("7_kek77")
+stretch_mode = 4
+
+[node name="Lap Number" type="TextureRect" parent="UserInterface/LapCount"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 334.0
+offset_top = 21.0
+offset_right = 374.0
+offset_bottom = 96.0
+texture = ExtResource("7_5vw27")
+stretch_mode = 4
+
+[node name="Slash" type="TextureRect" parent="UserInterface/LapCount"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 350.0
+offset_top = 51.0
+offset_right = 470.0
+offset_bottom = 185.0
+texture = ExtResource("8_kek77")
+stretch_mode = 4
+
+[node name="Total Laps" type="TextureRect" parent="UserInterface/LapCount"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 436.0
+offset_top = 102.0
+offset_right = 490.0
+offset_bottom = 209.0
+texture = ExtResource("10_efxa6")
+stretch_mode = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -227,41 +270,9 @@ one_shot = true
 [node name="WarningTimer" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="CountEnd" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="CountTimer" to="RaceManager" method="_on_count_timer_timeout"]
 [connection signal="timeout" from="WarningTimer" to="RaceManager" method="_on_warning_timer_timeout"]
-[node name="Lap Text" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 40.0
-offset_top = 25.0
-offset_right = 332.0
-offset_bottom = 217.0
-size_flags_horizontal = 3
-texture = ExtResource("7_kek77")
-stretch_mode = 4
-
-[node name="Lap Number" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 334.0
-offset_top = 21.0
-offset_right = 374.0
-offset_bottom = 96.0
-texture = ExtResource("7_5vw27")
-stretch_mode = 4
-
-[node name="Slash" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 350.0
-offset_top = 51.0
-offset_right = 470.0
-offset_bottom = 185.0
-texture = ExtResource("8_kek77")
-stretch_mode = 4
-
-[node name="Total Laps" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = 436.0
-offset_top = 102.0
-offset_right = 473.0
-offset_bottom = 181.0
-texture = ExtResource("7_5vw27")
-stretch_mode = 4
+[connection signal="timeout" from="CountEnd" to="RaceManager" method="_on_count_end_timeout"]

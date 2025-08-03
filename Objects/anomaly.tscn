@@ -6,7 +6,7 @@
 height = 0.794922
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fikew"]
-height = 0.8
+height = 4.0
 
 [node name="Anomaly" type="Area3D"]
 script = ExtResource("1_fikew")

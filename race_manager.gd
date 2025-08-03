@@ -26,12 +26,19 @@ var lap_time: Array[float] = []
 var anomaly_destroyed = false
 var countdown = 5
 
+@onready var number1 = preload("res://Assets/Sprites/UI/Numbers/1.png")
+@onready var number2 = preload("res://Assets/Sprites/UI/Numbers/2.png")
+@onready var number3 = preload("res://Assets/Sprites/UI/Numbers/3.png")
+@onready var number4 = preload("res://Assets/Sprites/UI/Numbers/4.png")
+@onready var number5 = preload("res://Assets/Sprites/UI/Numbers/5.png")
+@onready var GO_text = preload("res://Assets/Sprites/UI/Go! - Sprite.png")
 @export var anomaly_scene: PackedScene = preload("res://Objects/anomaly.tscn")
 @onready var path_follow: PathFollow3D = $"../Path3D/PathFollow3D"
 @onready var anomaly_lap = randi_range(2, laps_number)
 @onready var timerUI = $"../CanvasLayer/TimerControl"
 
 func _ready():
+	
 	$"../UserInterface/Countdown".hide()
 	$"../UserInterface/AnomalyWarning".hide()
 	var player = get_node("../Player")
@@ -56,14 +63,13 @@ func _process(delta) -> void:
 		
 func start_count():
 	$"../UserInterface/Countdown".show()
-	if countdown != 0:
+	if countdown != -1:
 		$"../CountTimer".start()
 	else:
-#		RE ENABLE INPUTS HERE
-		$"../UserInterface/Countdown/Label".text = "GO!"
+		$"../UserInterface/Countdown/Label".texture = GO_text
 		enable_input.emit()
-		$"../UserInterface/Countdown".hide()
 		race_started = true
+		$"../CountEnd".start()
 
 func save_time():
 	var lap_index = current_lap -1
@@ -104,6 +110,7 @@ func passThroughCheck(newCheckPoint, isStart, isFinal) -> void:
 	else: 
 		print("Wrong Way")
    # Check if race is finished 
+	update_lap()
 	if current_lap > laps_number:
 		get_tree().change_scene_to_file("res://UI/main_menu.tscn")
 		
@@ -135,7 +142,7 @@ func get_checkpoint() -> Array:
 	]
 
 func _on_count_timer_timeout() -> void:
-	$"../UserInterface/Countdown/Label".text = str(countdown)
+	get_texture()
 	print(countdown)
 	countdown -= 1
 	start_count()
@@ -143,3 +150,29 @@ func _on_count_timer_timeout() -> void:
 
 func _on_warning_timer_timeout() -> void:
 	$"../UserInterface/AnomalyWarning".hide()
+
+
+func _on_count_end_timeout() -> void:
+	$"../UserInterface/Countdown".hide()
+	
+func get_texture():
+		match countdown:
+			1:
+				$"../UserInterface/Countdown/Label".texture = number1
+			2:
+				$"../UserInterface/Countdown/Label".texture = number2
+			3:
+				$"../UserInterface/Countdown/Label".texture = number3
+			4:
+				$"../UserInterface/Countdown/Label".texture = number4
+			5:
+				$"../UserInterface/Countdown/Label".texture = number5
+	
+func update_lap():
+	match current_lap:
+		1:
+			$"../UserInterface/LapCount/Lap Number".texture = number1
+		2:
+			$"../UserInterface/LapCount/Lap Number".texture = number2
+		3:
+			$"../UserInterface/LapCount/Lap Number".texture = number3
