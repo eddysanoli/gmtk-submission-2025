@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhgqsafyr7gd8"]
+[gd_scene load_steps=15 format=3 uid="uid://bhgqsafyr7gd8"]
 
 [ext_resource type="MeshLibrary" uid="uid://7etwhnntf3gv" path="res://Assets/meshes/ground_tileset.tres" id="2_0xm2m"]
 [ext_resource type="MeshLibrary" uid="uid://b70jkwax5pmal" path="res://Assets/meshes/blocks_tileset.tres" id="2_h2yge"]
@@ -227,8 +227,6 @@ one_shot = true
 [node name="WarningTimer" type="Timer" parent="."]
 wait_time = 1.5
 
-[connection signal="timeout" from="CountTimer" to="RaceManager" method="_on_count_timer_timeout"]
-[connection signal="timeout" from="WarningTimer" to="RaceManager" method="_on_warning_timer_timeout"]
 [node name="Lap Text" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 40.0
@@ -265,3 +263,6 @@ offset_right = 473.0
 offset_bottom = 181.0
 texture = ExtResource("7_5vw27")
 stretch_mode = 4
+
+[connection signal="timeout" from="CountTimer" to="RaceManager" method="_on_count_timer_timeout"]
+[connection signal="timeout" from="WarningTimer" to="RaceManager" method="_on_warning_timer_timeout"]

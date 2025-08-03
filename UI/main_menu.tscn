@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b03trygfjo2me"]
+[gd_scene load_steps=6 format=3 uid="uid://b03trygfjo2me"]
 
 [ext_resource type="Script" uid="uid://c08fd513yu5xd" path="res://UI/main_menu.gd" id="1_06t4h"]
 [ext_resource type="Theme" uid="uid://fqdq3i4d0a7u" path="res://theme.tres" id="2_4cwpn"]
-[ext_resource type="Texture2D" uid="uid://h625qi2dcri6" path="res://Assets/images/main_menu_dog.png" id="2_tk8dj"]
-[ext_resource type="Texture2D" uid="uid://dgl0wotb86mxc" path="res://Assets/images/game_logo.png" id="3_d8nwk"]
+[ext_resource type="Texture2D" uid="uid://ctrwe3n0kmtjg" path="res://Assets/images/Main Screen.png" id="2_d8nwk"]
+
+[sub_resource type="Gradient" id="Gradient_d8nwk"]
+colors = PackedColorArray(0.137255, 0.34902, 0.678431, 0.678431, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4cwpn"]
+gradient = SubResource("Gradient_d8nwk")
+fill_from = Vector2(0.393162, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,14 +20,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06t4h")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.101961, 0.101961, 0.117647, 1)
+texture = SubResource("GradientTexture2D_4cwpn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 907.0
+offset_bottom = 720.0
+texture = ExtResource("2_d8nwk")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="Main Margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,47 +46,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_4cwpn")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main Margin"]
-layout_mode = 2
-theme = ExtResource("2_4cwpn")
-alignment = 1
-
-[node name="Shusho" type="TextureRect" parent="Main Margin/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_tk8dj")
-expand_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Main Margin/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_4cwpn")
-
-[node name="Logo" type="TextureRect" parent="Main Margin/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-texture = ExtResource("3_d8nwk")
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Main Margin/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Margin"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Play" type="Button" parent="Main Margin/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="Main Margin/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_4cwpn")
 text = "PLAY"
 
-[node name="Options" type="Button" parent="Main Margin/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="Main Margin/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_4cwpn")
 text = "OPTIONS"
 
-[node name="Exit" type="Button" parent="Main Margin/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="Main Margin/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_4cwpn")
 text = "QUIT"
 
-[connection signal="pressed" from="Main Margin/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Main Margin/HBoxContainer/VBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Main Margin/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Main Margin/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Main Margin/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main Margin/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
