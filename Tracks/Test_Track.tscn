@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4edbm5j3v8v5"]
+[gd_scene load_steps=10 format=3 uid="uid://b4edbm5j3v8v5"]
 
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="1_oixsa"]
 [ext_resource type="Texture2D" uid="uid://cad16yt8kgp1l" path="res://Assets/Sprites/Tracks/Mario Circuit 4.png" id="2_w6sij"]
 [ext_resource type="Script" uid="uid://cjfavep52ttra" path="res://Tracks/RaceManager.gd" id="3_y1r7d"]
 [ext_resource type="PackedScene" uid="uid://blm8k3irsmflt" path="res://Objects/Checkpoints/CheckPointV2.tscn" id="4_y1r7d"]
+[ext_resource type="PackedScene" uid="uid://cq6vwgud8dtdu" path="res://Objects/Time/timer_control.tscn" id="5_gs2if"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6sij"]
 transparency = 1
@@ -45,6 +46,7 @@ texture = ExtResource("2_w6sij")
 
 [node name="Player2D" parent="." instance=ExtResource("1_oixsa")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.3, 0.489297, -4.6)
+collision_mask = 7
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_w6sij")
@@ -268,4 +270,18 @@ checkName = "6"
 curve = SubResource("Curve3D_y1r7d")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.999871, 1.2711e-06, 0.0160701, 0, 1, -7.90976e-05, -0.0160701, -7.90874e-05, -0.999871, 9.24078, 0.047204, -2.77657)
+transform = Transform3D(-0.999871, 1.27125e-06, 0.0160708, 0, 1, -7.9103e-05, -0.0160708, -7.90927e-05, -0.999871, 9.24078, 0.047204, -2.77657)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerControl" parent="CanvasLayer" instance=ExtResource("5_gs2if")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(1.45322, 1.48253)

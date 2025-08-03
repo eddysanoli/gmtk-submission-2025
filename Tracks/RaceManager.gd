@@ -10,6 +10,7 @@ extends Node
 @export var laps_number: int = 3
 # if the race is a Loop (Same finish and start)
 @export var is_loop: bool
+@export var anomaly_scene: PackedScene = preload("res://Objects/anomaly.tscn")
 
 # Local Variables
 
@@ -23,17 +24,18 @@ var time_elapsed = 0.0
 var lap_time: Array[float] = []
 var anomaly_destroyed = false
 
-@export var anomaly_scene: PackedScene = preload("res://Objects/anomaly.tscn")
 @onready var path_follow: PathFollow3D = $"../Path3D/PathFollow3D"
 @onready var anomaly_lap = randi_range(2, laps_number)
+@onready var timerUI = $"../CanvasLayer/TimerControl"
 
 func _ready() -> void:
 	if is_loop: 
 		current_lap = 0
 		print('start', current_lap)
 
-
 func _process(delta) -> void:
+	# display current time
+	timerUI.set_time(time_elapsed)
   # Anomaly Generation
 	if current_lap == anomaly_lap && anomaly_present == false && not anomaly_destroyed: 
 		anomaly_present = true
@@ -44,8 +46,12 @@ func _process(delta) -> void:
 
 func save_time():
 	var lap_index = current_lap -1
-	lap_time[lap_index] = time_elapsed
-	time_elapsed = 0.0
+	var previous_time = 0;
+	if len(lap_time) > 0:
+		previous_time = lap_time.back()
+	timerUI.add_lap_time(time_elapsed - previous_time)
+	lap_time.append(time_elapsed)
+	#time_elapsed = 0.0
 
 func generate_anomaly() -> void:
 	var new_anomaly = anomaly_scene.instantiate()
@@ -63,18 +69,22 @@ func passThroughCheck(newCheckPoint, isStart, isFinal) -> void:
 	print('anomaly: ', anomaly_present)
 	if anomaly_present: 
 		return
-	print(race_order[next_check_point])
 	if newCheckPoint == race_order[next_check_point]:
 		print("Correct CheckPoint")
-		next_check_point = (next_check_point + 1) % len(race_order)
-		if (isFinal):
+		next_check_point = (next_check_point + 1) % len(race_order) 
+		if (isStart) && race_started == false:
+			race_started = true
+			return
+		if (isFinal && race_started):
 			if (isStart):
 				next_check_point = 1;
 				current_lap += 1;
+				save_time()
 				print('new lap')
 			else:
 				next_check_point = 0;
 				current_lap += 1;
+				save_time()
 				print('new lap')
 	else: 
 		print("Wrong Way")

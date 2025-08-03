@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq6vwgud8dtdu"]
+
+[ext_resource type="Script" uid="uid://c46bgheuvpyrx" path="res://Objects/Time/timer_control.gd" id="1_2usbu"]
+[ext_resource type="PackedScene" uid="uid://dypcsu3pbe07l" path="res://Objects/Time/TimeControl.tscn" id="1_ifd1g"]
+
+[node name="TimerControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2usbu")
+
+[node name="StopWatchControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Total" parent="StopWatchControl" instance=ExtResource("1_ifd1g")]
+
+[node name="LapTimesControl" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 23.0
+offset_right = 100.0
+offset_bottom = 93.0
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="LapTimesControl"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 70.0
+scale = Vector2(0.66811, 0.629044)
+
+[node name="VFlowContainer" type="VFlowContainer" parent="LapTimesControl/MarginContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 16
