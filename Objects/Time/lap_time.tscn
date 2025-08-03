@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://mvu84ye2tv1x"]
+
+[ext_resource type="Script" uid="uid://gh27ng4smdal" path="res://lap_time.gd" id="1_becds"]
+[ext_resource type="PackedScene" uid="uid://dypcsu3pbe07l" path="res://Objects/Time/TimeControl.tscn" id="2_lwjym"]
+[ext_resource type="Texture2D" uid="uid://dlc2x23ahyux5" path="res://Assets/images/Laps_-_Sprite.png" id="3_2ycl6"]
+
+[node name="Lap_time" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_becds")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_2ycl6")
+region_rect = Rect2(-1, 0, 94, 67.6053)
+
+[node name="TimeControl" parent="GridContainer" instance=ExtResource("2_lwjym")]
+layout_mode = 2

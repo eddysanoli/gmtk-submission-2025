@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc2ssve74wo34"]
+
+[ext_resource type="Texture2D" uid="uid://dlc2x23ahyux5" path="res://Assets/images/Laps_-_Sprite.png" id="1_lku7i"]
+
+[node name="2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 40.0
+texture = ExtResource("1_lku7i")
+region_rect = Rect2(123, 7, 28, 38)
+patch_margin_top = 34

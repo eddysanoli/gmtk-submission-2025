@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://dypcsu3pbe07l"]
+
+[ext_resource type="LabelSettings" uid="uid://bfawgboyfkdc" path="res://Assets/fonts/Algerian.tres" id="1_h7l48"]
+[ext_resource type="Script" uid="uid://yknapoilb18f" path="res://Objects/Time/time_control.gd" id="1_q3jgn"]
+
+[node name="TimeControl" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 104.0
+offset_bottom = 24.0
+script = ExtResource("1_q3jgn")
+metadata/_edit_lock_ = true
+
+[node name="Minutes" type="Label" parent="."]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 23.0
+text = "99"
+label_settings = ExtResource("1_h7l48")
+horizontal_alignment = 2
+
+[node name="Seconds" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 52.0
+offset_bottom = 23.0
+text = "99"
+label_settings = ExtResource("1_h7l48")
+horizontal_alignment = 2
+
+[node name="Mili" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 93.0
+offset_bottom = 23.0
+text = "999"
+label_settings = ExtResource("1_h7l48")
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 32.0
+offset_bottom = 23.0
+text = ":"
+label_settings = ExtResource("1_h7l48")
+metadata/_edit_lock_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_right = 64.0
+offset_bottom = 23.0
+text = ":"
+label_settings = ExtResource("1_h7l48")
+metadata/_edit_lock_ = true

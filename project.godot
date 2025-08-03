@@ -15,9 +15,19 @@ run/main_scene="uid://b03trygfjo2me"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+
 [filesystem]
 
 import/blender/enabled=false
+
+[gui]
+
+theme/default_font_subpixel_positioning=0
 
 [input]
 
