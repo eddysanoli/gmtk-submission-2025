@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+var input_enabled := false
+
 @onready var player: Node3D = $Node3D
 @onready var sprite = $Node3D/AnimatedSprite3D
 
@@ -18,6 +20,10 @@ var current_tile: int
 
 func _ready():
 	player.top_level = true
+	set_physics_process(false)
+	var rm = get_parent().get_node("RaceManager")
+	rm.connect("enable_input", Callable(self, "_on_enable_input"))
+	
 
 func _physics_process(delta):
 	player.global_position = global_position
@@ -31,6 +37,10 @@ func _physics_process(delta):
 	_curve_effect(delta)
 	player.rotate_y(turnDegree)
 	apply_force(-player.global_transform.basis.z * speedImpact)
+	
+func _on_enable_input():
+	input_enabled = true
+	set_physics_process(true)
 	
 func _curve_effect(delta) -> void:
 	var turnTiltValue = - turnDegree * linear_velocity.length() / TurnTilt

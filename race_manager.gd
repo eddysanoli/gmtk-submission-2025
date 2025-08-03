@@ -1,5 +1,7 @@
 extends Node
 
+signal enable_input
+
 #Editor Variables
 
 # Variable for the race name (useless for the time being)
@@ -22,13 +24,21 @@ var race_started = false
 var time_elapsed = 0.0
 var lap_time: Array[float] = []
 var anomaly_destroyed = false
+var countdown = 5
 
 @export var anomaly_scene: PackedScene = preload("res://Objects/anomaly.tscn")
 @onready var path_follow: PathFollow3D = $"../Path3D/PathFollow3D"
 @onready var anomaly_lap = randi_range(2, laps_number)
+@onready var timerUI = $"../CanvasLayer/TimerControl"
 
-func _ready() -> void:
-	if is_loop: 
+func _ready():
+	$"../UserInterface/Countdown".hide()
+	var player = get_node("../Player")
+	connect("enable_input", Callable(player, "_on_enable_input"))
+
+	# Race Start
+	start_count()
+	if is_loop:
 		current_lap = 0
 		print('start', current_lap)
 
@@ -41,6 +51,17 @@ func _process(delta) -> void:
   # Stopwatch
 	if race_started == true:
 		time_elapsed += delta
+		
+func start_count():
+	$"../UserInterface/Countdown".show()
+	if countdown != 0:
+		$"../CountTimer".start()
+	else:
+#		RE ENABLE INPUTS HERE
+		$"../UserInterface/Countdown/Label".text = "GO!"
+		enable_input.emit()
+		$"../UserInterface/Countdown".hide()
+		race_started = true
 
 func save_time():
 	var lap_index = current_lap -1
@@ -108,3 +129,9 @@ func get_checkpoint() -> Array:
 		marker.global_transform.origin,
 		directionPt.global_transform.origin
 	]
+
+func _on_count_timer_timeout() -> void:
+	$"../UserInterface/Countdown/Label".text = str(countdown)
+	print(countdown)
+	countdown -= 1
+	start_count()
