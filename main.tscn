@@ -3,7 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://7etwhnntf3gv" path="res://Assets/meshes/ground_tileset.tres" id="2_0xm2m"]
 [ext_resource type="MeshLibrary" uid="uid://b70jkwax5pmal" path="res://Assets/meshes/blocks_tileset.tres" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="3_h2yge"]
-[ext_resource type="Script" uid="uid://bok7i3t4o68av" path="res://race_manager.gd" id="4_1bvp3"]
+[ext_resource type="Script" path="res://race_manager.gd" id="4_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_top_color = Color(0.235228, 0.799807, 1, 1)

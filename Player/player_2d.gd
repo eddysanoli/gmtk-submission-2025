@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 @onready var player: Node3D = $Node3D
-@onready var sprite = $Node3D/Sprite3D
+@onready var sprite = $Node3D/AnimatedSprite3D
 
 var acceleration = 15
 var steering = 1.5
@@ -13,18 +13,17 @@ var terrain = 0
 var speedImpact: float
 var turnDegree: float
 
-@onready var ground_map = get_parent().get_node("Ground Map") 
+@onready var ground_map = get_parent().get_node("Ground Map")
 var current_tile: int
 
 func _ready():
 	player.top_level = true
 
-func  _physics_process(delta):
+func _physics_process(delta):
 	player.global_position = global_position
 	
 	var player_position = player.global_position
 	current_tile = ground_map.get_cell_item(player_position)
-	print(current_tile)
 	
 	speedImpact = Input.get_axis("accelerate", "reverse") * -acceleration
 	turnDegree = Input.get_axis("turn_right", "turn_left") * deg_to_rad(steering)
@@ -34,12 +33,12 @@ func  _physics_process(delta):
 	apply_force(-player.global_transform.basis.z * speedImpact)
 	
 func _curve_effect(delta) -> void:
-	var turnTiltValue = -turnDegree * linear_velocity.length() / TurnTilt
+	var turnTiltValue = - turnDegree * linear_velocity.length() / TurnTilt
 	var changeSpeed = 1
 	
 	if turnDegree == 0: changeSpeed = 3
-	player.rotation.z = lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
-	sprite.rotation.z = -lerp(player.rotation.z, turnTiltValue, changeSpeed * delta )
+	player.rotation.z = lerp(player.rotation.z, turnTiltValue, changeSpeed * delta)
+	sprite.rotation.z = - lerp(player.rotation.z, turnTiltValue, changeSpeed * delta)
 	
 	#Change Damp value according to the terrain 
 	match current_tile:
@@ -56,4 +55,3 @@ func boosted():
 
 func _on_boost_timer_timeout():
 	acceleration = 15
-	
