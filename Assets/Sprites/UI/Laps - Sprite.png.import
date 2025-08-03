@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cro1yr7jn3007"
-path="res://.godot/imported/Laps - Sprite.png-253cf566b85a8c30ee5f34c552afcbc3.ctex"
+path="res://.godot/imported/Laps - Sprite.png-a0abe27f8e492af5831f5c48215eb4c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/UI/Laps - Sprite.png"
-dest_files=["res://.godot/imported/Laps - Sprite.png-253cf566b85a8c30ee5f34c552afcbc3.ctex"]
+source_file="res://Assets/Sprites/UI/Laps - Sprite.png"
+dest_files=["res://.godot/imported/Laps - Sprite.png-a0abe27f8e492af5831f5c48215eb4c5.ctex"]
 
 [params]
 
