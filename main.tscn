@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhgqsafyr7gd8"]
+[gd_scene load_steps=13 format=3 uid="uid://bhgqsafyr7gd8"]
 
 [ext_resource type="MeshLibrary" uid="uid://7etwhnntf3gv" path="res://Assets/meshes/ground_tileset.tres" id="2_0xm2m"]
 [ext_resource type="MeshLibrary" uid="uid://b70jkwax5pmal" path="res://Assets/meshes/blocks_tileset.tres" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://5c6qpxee2un0" path="res://Player/player_2d.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://bok7i3t4o68av" path="res://race_manager.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://blm8k3irsmflt" path="res://Objects/Checkpoints/CheckPointV2.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://duthwdie64abd" path="res://Assets/sprites/UI/Numbers/1.png" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cro1yr7jn3007" path="res://Assets/sprites/UI/Laps - Sprite.png" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://pwrnd4idsp14" path="res://Assets/sprites/UI/Slash - Sprite.png" id="8_kek77"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_top_color = Color(0.235228, 0.799807, 1, 1)
@@ -144,3 +147,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 
 [node name="DirectionPoint" type="Node3D" parent="RaceManager/CheckPointV8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, -0.806387)
+
+[node name="Lap Text" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 332.0
+offset_bottom = 217.0
+size_flags_horizontal = 3
+texture = ExtResource("7_kek77")
+stretch_mode = 4
+
+[node name="Lap Number" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 334.0
+offset_top = 21.0
+offset_right = 374.0
+offset_bottom = 96.0
+texture = ExtResource("7_5vw27")
+stretch_mode = 4
+
+[node name="Slash" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 350.0
+offset_top = 51.0
+offset_right = 470.0
+offset_bottom = 185.0
+texture = ExtResource("8_kek77")
+stretch_mode = 4
+
+[node name="Total Laps" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 436.0
+offset_top = 102.0
+offset_right = 473.0
+offset_bottom = 181.0
+texture = ExtResource("7_5vw27")
+stretch_mode = 4

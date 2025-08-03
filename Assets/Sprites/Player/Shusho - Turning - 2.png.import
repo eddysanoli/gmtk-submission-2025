@@ -2,31 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cad16yt8kgp1l"
-path.s3tc="res://.godot/imported/Mario Circuit 4.png-fa7c62d669a9925e022d5ef48b0f0425.s3tc.ctex"
+uid="uid://1tolvq2aan0a"
+path="res://.godot/imported/Shusho - Turning - 2.png-d18e90965d094b7c6806ac52aa13472b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/sprites/Tracks/Mario Circuit 4.png"
-dest_files=["res://.godot/imported/Mario Circuit 4.png-fa7c62d669a9925e022d5ef48b0f0425.s3tc.ctex"]
+source_file="res://Assets/sprites/Player/Shusho - Turning - 2.png"
+dest_files=["res://.godot/imported/Shusho - Turning - 2.png-d18e90965d094b7c6806ac52aa13472b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

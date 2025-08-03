@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bac1aufew14nt"
-path="res://.godot/imported/Shusho - Turning - 1.png-e30b8c69998659b33eb61dd6540bfe8b.ctex"
+uid="uid://fodo1pgi7d2g"
+path="res://.godot/imported/2.png-e411ddc505bada165066eb2b64ce8466.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/Shusho - Turning - 1.png"
-dest_files=["res://.godot/imported/Shusho - Turning - 1.png-e30b8c69998659b33eb61dd6540bfe8b.ctex"]
+source_file="res://Assets/sprites/UI/Numbers/2.png"
+dest_files=["res://.godot/imported/2.png-e411ddc505bada165066eb2b64ce8466.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
