@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bok7i3t4o68av" path="res://race_manager.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://blm8k3irsmflt" path="res://Objects/Checkpoints/CheckPointV2.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cq6vwgud8dtdu" path="res://Objects/Time/timer_control.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://duthwdie64abd" path="res://Assets/sprites/UI/Numbers/1.png" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cro1yr7jn3007" path="res://Assets/sprites/UI/Laps - Sprite.png" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://pwrnd4idsp14" path="res://Assets/sprites/UI/Slash - Sprite.png" id="8_kek77"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 sky_top_color = Color(0.235228, 0.799807, 1, 1)
@@ -226,3 +229,39 @@ wait_time = 1.5
 
 [connection signal="timeout" from="CountTimer" to="RaceManager" method="_on_count_timer_timeout"]
 [connection signal="timeout" from="WarningTimer" to="RaceManager" method="_on_warning_timer_timeout"]
+[node name="Lap Text" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 40.0
+offset_top = 25.0
+offset_right = 332.0
+offset_bottom = 217.0
+size_flags_horizontal = 3
+texture = ExtResource("7_kek77")
+stretch_mode = 4
+
+[node name="Lap Number" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 334.0
+offset_top = 21.0
+offset_right = 374.0
+offset_bottom = 96.0
+texture = ExtResource("7_5vw27")
+stretch_mode = 4
+
+[node name="Slash" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 350.0
+offset_top = 51.0
+offset_right = 470.0
+offset_bottom = 185.0
+texture = ExtResource("8_kek77")
+stretch_mode = 4
+
+[node name="Total Laps" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 436.0
+offset_top = 102.0
+offset_right = 473.0
+offset_bottom = 181.0
+texture = ExtResource("7_5vw27")
+stretch_mode = 4

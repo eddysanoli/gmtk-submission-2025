@@ -2,31 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjxrv6ws1vrls"
-path.s3tc="res://.godot/imported/McQueenSpriteSheet - Big.png-921fb3fc40c51991082c649cdcd4f969.s3tc.ctex"
+uid="uid://btwwus7hqlm5k"
+path="res://.godot/imported/Shusho - Turning - 3.png-edff5af1ae68fddb55864b6104e29575.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/McQueenSpriteSheet - Big.png"
-dest_files=["res://.godot/imported/McQueenSpriteSheet - Big.png-921fb3fc40c51991082c649cdcd4f969.s3tc.ctex"]
+source_file="res://Assets/sprites/Player/Shusho - Turning - 3.png"
+dest_files=["res://.godot/imported/Shusho - Turning - 3.png-edff5af1ae68fddb55864b6104e29575.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

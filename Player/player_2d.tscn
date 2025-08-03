@@ -1,54 +1,33 @@
-[gd_scene load_steps=12 format=3 uid="uid://5c6qpxee2un0"]
+[gd_scene load_steps=13 format=3 uid="uid://5c6qpxee2un0"]
 
 [ext_resource type="Script" uid="uid://n4l5w1bomkkt" path="res://Player/player_2d.gd" id="1_ovrnl"]
-[ext_resource type="Texture2D" uid="uid://bjxrv6ws1vrls" path="res://Sprites/Player/McQueenSpriteSheet - Big.png" id="3_aqtw3"]
-[ext_resource type="Script" path="res://Player/animated_sprite_3d.gd" id="3_wrvhv"]
+[ext_resource type="Texture2D" uid="uid://cp4vqlam1163q" path="res://Assets/sprites/Player/Shusho - Idle - Spritesheet.png" id="2_wrvhv"]
+[ext_resource type="Texture2D" uid="uid://bac1aufew14nt" path="res://Assets/sprites/Player/Shusho - Turning - 1.png" id="3_veguh"]
+[ext_resource type="Script" uid="uid://oenoat8lvtas" path="res://Player/animated_sprite_3d.gd" id="3_wrvhv"]
+[ext_resource type="Texture2D" uid="uid://1tolvq2aan0a" path="res://Assets/sprites/Player/Shusho - Turning - 2.png" id="4_mngsx"]
+[ext_resource type="Texture2D" uid="uid://btwwus7hqlm5k" path="res://Assets/sprites/Player/Shusho - Turning - 3.png" id="5_mngsx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ovrnl"]
 radius = 0.160687
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqtw3"]
-atlas = ExtResource("3_aqtw3")
-region = Rect2(0, 0, 33, 39)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wrvhv"]
-atlas = ExtResource("3_aqtw3")
-region = Rect2(99, 0, 33, 39)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_veguh"]
-atlas = ExtResource("3_aqtw3")
-region = Rect2(0, 0, 33, 39)
+atlas = ExtResource("2_wrvhv")
+region = Rect2(0, 0, 31, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mngsx"]
-atlas = ExtResource("3_aqtw3")
-region = Rect2(33, 0, 33, 39)
+atlas = ExtResource("2_wrvhv")
+region = Rect2(31, 0, 31, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7v6b0"]
-atlas = ExtResource("3_aqtw3")
-region = Rect2(66, 0, 33, 39)
+atlas = ExtResource("2_wrvhv")
+region = Rect2(62, 0, 31, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8ep0"]
-atlas = ExtResource("3_aqtw3")
-region = Rect2(99, 0, 33, 39)
+atlas = ExtResource("2_wrvhv")
+region = Rect2(93, 0, 31, 39)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovrnl"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aqtw3")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wrvhv")
-}],
-"loop": false,
-"name": &"turned",
-"speed": 1.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_veguh")
@@ -63,8 +42,30 @@ animations = [{
 "texture": SubResource("AtlasTexture_o8ep0")
 }],
 "loop": false,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_mngsx")
+}],
+"loop": false,
+"name": &"turned",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_veguh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mngsx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_mngsx")
+}],
+"loop": false,
 "name": &"turning",
-"speed": 7.0
+"speed": 6.0
 }]
 
 [node name="Player" type="RigidBody3D"]
@@ -80,7 +81,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.018128, 0)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00604267, 0)
-texture_filter = 0
+texture_filter = 4
 sprite_frames = SubResource("SpriteFrames_ovrnl")
 animation = &"turning"
 script = ExtResource("3_wrvhv")
