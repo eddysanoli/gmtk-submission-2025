@@ -1,9 +1,11 @@
-# GMTK Game Jam Submission 2025
+# Loop Racer
 
-2025 submission for the GMTK Game Jam. We dont know what this will be about, but it sure will be something. The game of all time, perhaps?
+[Loop Racer](./Assets/images/Promo%20Material/Game%20Banner.png)
 
-Members:
-- Almendro
-- Roderyx
-- Eddysanoli
-- Jocarsoli
+"Shusho" the dog is trapped in a time loop. He must race around a retro track in order to finish his mission, but along the way he may find anomalies that prevent him from progressing. By crashing into them, you will reset the time loop and allow "Shusho" to continue on his mission. Finish all 3 laps in the shortest time possible to escape!
+
+Rough prototype. Controls: WASD
+
+Submission for GMTK GameJam 2025
+
+[Play the game here!](https://almendro-w.itch.io/loop-racing)
